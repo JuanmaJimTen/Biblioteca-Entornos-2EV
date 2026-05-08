@@ -1,0 +1,15 @@
+{
+    "name": "biblioteca",
+    "version": "0.1",
+    "description": "Gestión de una biblioteca",
+    "scripts": {
+        "start": "node src/app.js"
+    },
+    "author": "Juan Manuel Jiménez Tenorio",
+    "license": "GPL-2.0-only",
+
+    "dependencies": {
+        "express": "^4.21.1",
+        "cors": "2.8.5"
+    }
+}

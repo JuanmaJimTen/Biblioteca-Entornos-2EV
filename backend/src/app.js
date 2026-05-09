@@ -14,6 +14,12 @@ const db = knex({
     useNullAsDefault: true
 });
 
+app.listen(8080, () => {
+    console.log('El backend se ha iniciado en el puerto 8080');
+});
+
+// --AUTORES--
+
 // Obtener todos los autores
 app.get('/autores', async (req, res) => {
     try {
@@ -75,7 +81,30 @@ app.delete('/autores/:id', async (req, res) => {
     }
 });
 
+// --LIBROS--
 
+// Obtener todos los libros
+app.get('/libros', async (req, res) => {
+    try {
+        const libros = await db('libros').select('*');
+        res.status(200).json(libros);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Obtener libros por autor específico
+app.get('/autores/:id/libros', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const libros = await db('libros').where({ id_autor: id }).select('*');
+        res.status(200).json(libros);
+    } catch(error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Crear un nuevo libro
 app.post('/libros', async (req, res) => {
     try {
         const { titulo, ano_publicacion, descripcion, genero, id_autor } = req.body;
@@ -92,13 +121,37 @@ app.post('/libros', async (req, res) => {
     }
 });
 
+// Actualizar libro
+app.put('/libros/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { titulo, ano_publicacion, descripcion, genero, id_autor } = req.body;
+        const actualizado = await db('libros').where({ id }).update({ 
+            titulo, 
+            ano_publicacion, 
+            descripcion, 
+            genero, 
+            id_autor 
+        });
 
+        if (!actualizado) return res.status(404).json({ error: 'Libro no encontrado' });
+        res.status(200).json({ mensaje: "Libro actualizado con éxito" });
 
-app.get('/libros', async (req, res) => {
-    const libros = await db('libros').select('*');
-    res.status(200).json(libros);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
-app.listen(8080, () => {
-    console.log('El backend se ha iniciado en el puerto 8080');
+// Eliminar libro
+app.delete('/libros/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const eliminado = await db('libros').where({ id }).del();
+
+        if (!eliminado) return res.status(404).json({ error: 'Libro no encontrado' });
+        res.status(200).json({ mensaje: "Libro eliminado con éxito" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
+

@@ -20,7 +20,8 @@ const cargarDatos = async () => {
     try {
         const resAutor = await axios.get(URL_AUTORES);
         tituloPagina.innerText = `Libros de ${nombre}`;
-        document.getElementById('info-autor').innerText = `Nacionalidad: ${resAutor.data.nacionalidad}. Año de nacimiento: ${resAutor.data.ano_nacimiento}`;
+        document.getElementById('info-autor').innerText = `Nacionalidad: ${resAutor.data.nacionalidad}.
+        Año de nacimiento: ${resAutor.data.ano_nacimiento}`;
 
         const resLibros = await axios.get(URL_LIBROS_AUTOR);
         pintarLibros(resLibros.data);

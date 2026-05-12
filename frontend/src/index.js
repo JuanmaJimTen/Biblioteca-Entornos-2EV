@@ -74,6 +74,11 @@ const obtenerAutores = async () => {
             nacionalidad: document.getElementById('nacionalidad').value
         };
 
+        if (nuevoAutor.nombre.trim() === '') {
+            alert('El nombre del autor no puede estar vacío.');
+            return;
+        }
+
         try {
             if (editandoAutor) {
                 await axios.put(`${URL_API}/${idAutorAEditar}`, nuevoAutor);

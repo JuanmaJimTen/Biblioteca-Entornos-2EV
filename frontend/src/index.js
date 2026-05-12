@@ -29,7 +29,7 @@ const obtenerAutores = async () => {
                 <h4>${autor.nombre}</h4>
                 <p>Año de nacimiento: ${autor.ano_nacimiento || 'Desconocido'}</p>
                 <p>Nacionalidad: ${autor.nacionalidad || 'Desconocida'}</p>
-                <button onclick="window.location.href='libros.html?id=${autor.id}&nombre=${autor.nombre}'">Ver sus Libros</button>
+                <button class="btn-ver-libros" onclick="window.location.href='libros.html?id=${autor.id}&nombre=${autor.nombre}'">Ver sus Libros</button>
                 <button class="btn-editar" data-id="${autor.id}" data-nombre="${autor.nombre}" data-nacimiento="${autor.ano_nacimiento}" data-nacionalidad="${autor.nacionalidad}">Editar</button>
                 <button class="btn-eliminar" data-id="${autor.id}">Eliminar</button>
             `;

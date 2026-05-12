@@ -90,6 +90,11 @@ formLibro.addEventListener('submit', async (e) => {
         id_autor: autorId
     };
 
+    if (nuevoLibro.titulo.trim() === '') {
+        alert('El título del libro no puede estar vacío.');
+        return;
+    }
+
     try {
         if (editandoLibro) {
             await axios.put(`${URL_LIBROS}/${idLibroAEditar}`, nuevoLibro);

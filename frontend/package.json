@@ -1,7 +1,7 @@
 {
     "name": "biblioteca-frontend",
     "version": "0.1",
-    "source": "src/index.html",
+    "source": "src/*.html",
     "type": "module",
     "scripts": {
         "start": "parcel --no-cache",

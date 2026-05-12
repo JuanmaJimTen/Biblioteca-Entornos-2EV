@@ -1,0 +1,253 @@
+{
+  "info": {
+    "_postman_id": "4e936fd5-28ae-4c79-9f53-087659f41435",
+    "name": "Biblioteca Postman Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52996490",
+    "_collection_link": "https://go.postman.co/collection/52996490-4e936fd5-28ae-4c79-9f53-087659f41435?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get All Autores",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/autores",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Autores/:ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/autores/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear Autor",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"\",\r\n    \"ano_nacimiento\": 1978,\r\n    \"nacionalidad\": \"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/autores",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modificar Autor por ID",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"\",\r\n    \"ano_nacimiento\": 1888,\r\n    \"nacionalidad\": \"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/autores/4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Borrar Autor por ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"\",\r\n    \"ano_nacimiento\": 1888,\r\n    \"nacionalidad\": \"\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/autores/4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Libros",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/libros",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "libros"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Libros por ID de Autor",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/autores/1/libros",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "autores",
+            "1",
+            "libros"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear Libro",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"titulo\": \"\",\r\n    \"ano_publicacion\": 1977,\r\n    \"descripcion\": \"\",\r\n    \"genero\": \"\",\r\n    \"id_autor\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/libros",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "libros"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Editar Libro por ID",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"titulo\": \"\",\r\n    \"ano_publicacion\": 1492,\r\n    \"descripcion\": \"\",\r\n    \"genero\": \"\",\r\n    \"id_autor\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/libros/5",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "libros",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Borrar Libro por ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"titulo\": \"\",\r\n    \"ano_publicacion\": 1492,\r\n    \"descripcion\": \"\",\r\n    \"genero\": \"\",\r\n    \"id_autor\": 1\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/libros/5",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "libros",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

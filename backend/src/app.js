@@ -5,3 +5,153 @@ const knex = require('knex');
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const db = knex({
+    client: 'sqlite3',
+    connection: {
+        filename: 'bibliotecadb.db'
+    },
+    useNullAsDefault: true
+});
+
+app.listen(8080, () => {
+    console.log('El backend se ha iniciado en el puerto 8080');
+});
+
+// --AUTORES--
+
+// Obtener todos los autores
+app.get('/autores', async (req, res) => {
+    try {
+        const autores = await db('autores').select('*');
+        res.status(200).json(autores);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Obtener un autor por su ID
+app.get('/autores/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const autor = await db('autores').where({ id }).first();
+        if (!autor) return res.status(404).json({ error: 'Autor no encontrado' });
+        res.status(200).json(autor);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Crear un nuevo autor   
+app.post('/autores', async (req, res) => {
+    try {
+        const { nombre, ano_nacimiento, nacionalidad } = req.body;
+        await db('autores').insert({ nombre, ano_nacimiento, nacionalidad });
+        res.status(201).json({ mensaje: "Autor creado con éxito" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Actualizar autor
+app.put('/autores/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nombre, ano_nacimiento, nacionalidad } = req.body;
+        const actualizado = await db('autores').where({ id }).update({ nombre, ano_nacimiento, nacionalidad });
+
+        if (!actualizado) return res.status(404).json({ error: 'Autor no encontrado' });
+        res.status(200).json({ mensaje: "Autor actualizado con éxito" });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Eliminar autor
+app.delete('/autores/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const eliminado = await db('autores').where({ id }).del();
+
+        if (!eliminado) return res.status(404).json({ error: 'Autor no encontrado' });
+        res.status(200).json({ mensaje: "Autor eliminado con éxito" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// --LIBROS--
+
+// Obtener todos los libros
+app.get('/libros', async (req, res) => {
+    try {
+        const libros = await db('libros').select('*');
+        res.status(200).json(libros);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Obtener libros por autor específico
+app.get('/autores/:id/libros', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const libros = await db('libros').where({ id_autor: id }).select('*');
+        res.status(200).json(libros);
+    } catch(error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Crear un nuevo libro
+app.post('/libros', async (req, res) => {
+    try {
+        const { titulo, ano_publicacion, descripcion, genero, id_autor } = req.body;
+        await db('libros').insert({ 
+            titulo, 
+            ano_publicacion, 
+            descripcion, 
+            genero, 
+            id_autor 
+        });
+        res.status(201).json({ mensaje: "Libro registrado y vinculado al autor" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Actualizar libro
+app.put('/libros/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { titulo, ano_publicacion, descripcion, genero, id_autor } = req.body;
+        const actualizado = await db('libros').where({ id }).update({ 
+            titulo, 
+            ano_publicacion, 
+            descripcion, 
+            genero, 
+            id_autor 
+        });
+
+        if (!actualizado) return res.status(404).json({ error: 'Libro no encontrado' });
+        res.status(200).json({ mensaje: "Libro actualizado con éxito" });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Eliminar libro
+app.delete('/libros/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const eliminado = await db('libros').where({ id }).del();
+
+        if (!eliminado) return res.status(404).json({ error: 'Libro no encontrado' });
+        res.status(200).json({ mensaje: "Libro eliminado con éxito" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+

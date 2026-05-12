@@ -1,0 +1,63 @@
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f4f7f6;
+    color: #000000;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h3 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px 15px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-weight: bold;
+    background: #27ae60;
+}
+
+button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+}
+
+.btn-editar {
+    background: #f39c12;
+}
+
+.btn-eliminar {
+    background: #e74c3c;
+}
+
+.btn-ver-libros {
+    background: #27ae60;
+}
+
+#lista-autores, #lista-libros {
+    display: grid;
+    gap: 15px;
+}
+
+#info-autor {
+    text-align:center;
+}

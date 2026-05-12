@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros del Autor@</title>
+</head>
+<body>
+    <button onclick= "window.location.href='index.html'">Volver a Autor@s</button>
+
+    <h1 id="titulo-autor">Libros de ...</h1>
+    <p id="info-autor"></p>
+
+    <section>
+        <h3>Añadir Libro a este Autor@</h3>
+        <form id="form-libro">
+            <input type="text" id="titulo" placeholder="Título" required>
+            <input type="number" id="ano_publicacion" placeholder="Año de Publicación">
+            <input type="text" id="genero" placeholder="Género">
+            <textarea id="descripcion" placeholder="Descripción"></textarea>
+            <button type="submit">Guardar Libro</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <div id="lista-libros">
+        <p>Cargando...</p>
+    </div>
+
+    <script src="./libros.js" type="module"></script>
+
+</body>
+</html>
